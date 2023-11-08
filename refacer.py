@@ -193,10 +193,10 @@ class Refacer:
             
             if not self.upscale_en: 
                 #print('\nRun native paste_back')
-                frame = self.face_swapper.get(frame, face, self.replacement_faces[0][1], paste_back=True)
+                frame = self.face_swapper.get(frame, faces[0], self.replacement_faces[0][1], paste_back=True)
             else: 
                 #print('\nRun upscale')
-                bgr_fake, M = self.face_swapper.get(frame, face, self.replacement_faces[0][1], paste_back=False)
+                bgr_fake, M = self.face_swapper.get(frame, faces[0], self.replacement_faces[0][1], paste_back=False)
                 frame = self.paste_upscale(bgr_fake,M,frame)
         return frame
 
@@ -209,10 +209,10 @@ class Refacer:
                     
                     if not self.upscale_en: 
                         #print('\nRun native paste_back')
-                        frame = self.face_swapper.get(frame, face, rep_face[1], paste_back=True)
+                        frame = self.face_swapper.get(frame, faces[i], rep_face[1], paste_back=True)
                     else: 
                         #print('\nRun upscale')
-                        bgr_fake, M = self.face_swapper.get(frame, face, rep_face[1], paste_back=False)
+                        bgr_fake, M = self.face_swapper.get(frame, faces[i], rep_face[1], paste_back=False)
                         frame = self.paste_upscale(bgr_fake,M,frame)
                     del faces[i]
                     break
